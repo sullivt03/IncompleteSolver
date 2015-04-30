@@ -1,3 +1,11 @@
+/**
+ * Simple driver class that reads in the cnf file for solving. Creates a solver instance
+ * and is used to call solver.start() to start the solver.
+ * 
+ * @authors Thomas Sullivan && Hawiar Hussein
+ * @version 04.30.15
+ */
+
 package incomplete_solver;
 
 import java.io.BufferedReader;

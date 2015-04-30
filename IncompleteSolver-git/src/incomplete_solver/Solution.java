@@ -1,3 +1,8 @@
+/**
+ * @authors Thomas Sullivan && Hawiar Hussein
+ * @version 04.30.15
+ */
+
 package incomplete_solver;
 
 import java.util.Arrays;

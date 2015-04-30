@@ -1,3 +1,8 @@
+/**
+ * @authors Thomas Sullivan && Hawiar Hussein
+ * @version 04.30.15
+ */
+
 package incomplete_solver;
 
 import java.util.ArrayList;
@@ -14,10 +19,10 @@ public class Solver {
 	private Random rand;
 	protected Instance instance;
 	
-	private long tabuTenure;
-	private long[] tabuList;
+	private long num;
+	private long[] list;
 	
-	private long time_limit = 5000;
+	private long time_limit = 600000;
 	
 	
 	public Solver(Instance ins, Random r) {
@@ -26,16 +31,13 @@ public class Solver {
 						
 		int numValiable = instance.getNumValiables();
 		
-		tabuTenure = (long)(numValiable * 0.1);
-		tabuList = new long[numValiable];
+		num = (long)(numValiable * 0.1);
+		list = new long[numValiable];
 		for (int i=0; i<numValiable; i++) {
-			tabuList[i] = Long.MIN_VALUE/2;
+			list[i] = Long.MIN_VALUE/2;
 		}
 	}
-	
-	public void setTabuTenureRatio(double r) {
-		tabuTenure = (long)(instance.getNumValiables() * r);
-	}
+
 	
 	public String start() {
 		long sTime = System.currentTimeMillis();
@@ -51,7 +53,7 @@ public class Solver {
 			long bestDiff = Long.MAX_VALUE;
 			List<Integer> bestIndices = new ArrayList<Integer>();
 			for (int index=0; index<instance.getNumValiables(); index++) {
-				if (numIteration - tabuList[index] > tabuTenure) {
+				if (numIteration - list[index] > num) {
 					long diff = instance.getFlipDifference(current, index);
 					if (bestDiff > diff) {
 						bestDiff = diff;
@@ -71,7 +73,7 @@ public class Solver {
 				System.out.println("o "+currentUV);
 			}
 			
-			tabuList[flipIndex] = numIteration;
+			list[flipIndex] = numIteration;
 			numIteration += 1;
 			if(currentUV == 0){
 				Util.printValues(incumbent.assignment);
