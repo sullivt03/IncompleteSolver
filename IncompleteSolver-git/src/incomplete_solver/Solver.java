@@ -9,7 +9,7 @@ import incomplete_solver.Instance;
 import incomplete_solver.Solution;
 import incomplete_solver.Util;
 
-public class Algorithm {
+public class Solver {
 
 	private Random rand;
 	protected Instance instance;
@@ -20,7 +20,7 @@ public class Algorithm {
 	private long time_limit = 5000;
 	
 	
-	public Algorithm(Instance ins, Random r) {
+	public Solver(Instance ins, Random r) {
 		instance = ins;
 		rand = r;
 						

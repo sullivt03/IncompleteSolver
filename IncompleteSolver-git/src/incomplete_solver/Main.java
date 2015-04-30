@@ -30,8 +30,8 @@ public class Main {
 
 		
 		Random random = new Random(1);
-		Algorithm ts = new Algorithm(instance, random);
-		ts.start();
+		Solver solver = new Solver(instance, random);
+		solver.start();
 		
 
 	}
