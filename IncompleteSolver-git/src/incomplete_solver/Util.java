@@ -18,7 +18,7 @@ public class Util {
 	}
 	
 	public static void printValues(boolean[] values) {
-		System.out.print("v ");
+		System.out.print("Solution: ");
 		for (int i=0; i<values.length; i++) {
 			int x = i+1;
 			if (values[i] == false) {

@@ -1,4 +1,13 @@
 /**
+ * Solver class to solve the input from the cnf file. A time limit is needed since the solver might never
+ * find a solution to the given problem, even if there is a solution. A message is printed if the solver goes 
+ * the whole time limit, saying a solution was not found. Othewise, the program will stop as soon as a 
+ * solution is found.
+ * 
+ * The solver stores the best possible found solution in the incumbent variable of type Solution.
+ * That solution is printed using the Util class and printValues method. The method converts 
+ * the stored true/false values in their associated position in the array.
+ * 
  * @authors Thomas Sullivan && Hawiar Hussein
  * @version 04.30.15
  */
@@ -39,15 +48,16 @@ public class Solver {
 	}
 
 	
-	public String start() {
+	public void start() {
 		long sTime = System.currentTimeMillis();
+		System.out.println("Solving...");
 		
 		long numIteration = 0;
 		
 		boolean[] current = Util.getRandomAssignment(instance.getNumValiables(), rand);
 		long currentUV = instance.getUnsatisfiedValue(current);
 		Solution incumbent = new Solution(Arrays.copyOf(current, current.length), currentUV);
-		System.out.println("o "+currentUV);
+		//System.out.println("o "+currentUV);
 		
 		while(System.currentTimeMillis() - sTime < time_limit) {
 			long bestDiff = Long.MAX_VALUE;
@@ -70,7 +80,7 @@ public class Solver {
 
 			if (currentUV < incumbent.unsatisfiedValue) {
 				incumbent = new Solution(Arrays.copyOf(current, current.length), currentUV);
-				System.out.println("o "+currentUV);
+				//System.out.println("o "+currentUV);
 			}
 			
 			list[flipIndex] = numIteration;
@@ -86,7 +96,6 @@ public class Solver {
 		long endTime = System.currentTimeMillis();
 		System.out.println(endTime - sTime + " ms");
 		System.exit(0);
-		return "Solution not found";
 		
 	}
 
