@@ -8,6 +8,9 @@
  * That solution is printed using the Util class and printValues method. The method converts 
  * the stored true/false values in their associated position in the array.
  * 
+ * If a solution is found, it will be printed. Otherwise, the program will run for the alloted time
+ * limit, which in this case is 10 minutes.
+ * 
  * @authors Thomas Sullivan && Hawiar Hussein
  * @version 04.30.15
  */
@@ -33,7 +36,6 @@ public class Solver {
 	
 	private long time_limit = 600000;
 	
-	
 	public Solver(Instance ins, Random r) {
 		instance = ins;
 		rand = r;
@@ -57,7 +59,6 @@ public class Solver {
 		boolean[] current = Util.getRandomAssignment(instance.getNumValiables(), rand);
 		long currentUV = instance.getUnsatisfiedValue(current);
 		Solution incumbent = new Solution(Arrays.copyOf(current, current.length), currentUV);
-		//System.out.println("o "+currentUV);
 		
 		while(System.currentTimeMillis() - sTime < time_limit) {
 			long bestDiff = Long.MAX_VALUE;
@@ -80,7 +81,6 @@ public class Solver {
 
 			if (currentUV < incumbent.unsatisfiedValue) {
 				incumbent = new Solution(Arrays.copyOf(current, current.length), currentUV);
-				//System.out.println("o "+currentUV);
 			}
 			
 			list[flipIndex] = numIteration;

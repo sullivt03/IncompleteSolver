@@ -1,4 +1,8 @@
 /**
+ * The solution class is used to generate the solution to the file. Used in the solver class,
+ * an instance of this class is used to keep track of the current (incumbent variable in solver
+ * class) values that could potentially solve the equation.
+ * 
  * @authors Thomas Sullivan && Hawiar Hussein
  * @version 04.30.15
  */
@@ -7,7 +11,7 @@ package incomplete_solver;
 
 import java.util.Arrays;
 
-public class Solution implements Comparable<Solution> {
+public class Solution {//implements Comparable<Solution> {
 	public boolean[] assignment;
 	public long unsatisfiedValue;
 	
@@ -35,18 +39,6 @@ public class Solution implements Comparable<Solution> {
 		return false;
 	}
 
-	@Override
-	public int compareTo(Solution arg0) {
-		long d = this.unsatisfiedValue - arg0.unsatisfiedValue;
-		if (d < 0) {
-			return -1;
-		} else if (d == 0) {
-			return compare(this.assignment, arg0.assignment);
-		} else {
-			return 1;
-		}
-	}
-	
 	private int compare(boolean[] array1, boolean[] array2) {
 		for (int i=0; i<array1.length; i++) {
 			if (array1[i] == false && array2[i] == true) {
@@ -62,4 +54,5 @@ public class Solution implements Comparable<Solution> {
 	public String toString() {
 		return Arrays.toString(assignment)+"\n"+unsatisfiedValue;
 	}
+
 }

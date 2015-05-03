@@ -1,4 +1,8 @@
 /**
+ * The instance class seperates the input file into different clauses to be solved.
+ * This class is responsible for storing the unsatisfied clauses and the flipping of
+ * the variables.
+ * 
  * @authors Thomas Sullivan && Hawiar Hussein
  * @version 04.30.15
  */

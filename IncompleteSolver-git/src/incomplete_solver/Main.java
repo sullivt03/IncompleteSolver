@@ -20,7 +20,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		
-		String filename = "s28.cnf";
+		String filename = "coloring.cnf";
 		Instance instance = null;
 			try {
 				BufferedReader br = new BufferedReader(new FileReader(filename));

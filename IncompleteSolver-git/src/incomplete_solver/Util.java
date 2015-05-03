@@ -1,4 +1,9 @@
 /**
+ * Util class is used to print out the solution is a certain way. Since the array in the solver is 
+ * stored with true or false values, the printValues() method prints out the true vales as just the
+ * variable and the false values with a negative in front in the final solution. The getRandomAssignment()
+ * method generates a random starting point to try to solve the equation.
+ * 
  * @authors Thomas Sullivan && Hawiar Hussein
  * @version 04.30.15
  */
